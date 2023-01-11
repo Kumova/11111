@@ -6,8 +6,8 @@ class Phone(models.Model):
     id = models.BigAutoField(primary_key=True)
     name = models.CharField(max_length=50)
     price = models.CharField(max_length=30)
-    image = models.ImageField()
-    release_date = models.DateTimeField()
+    image = models.ImageField(upload_to="photos/%Y/%m/%d/")
+    release_date = models.DateTimeField(auto_now_add=True)
     lte_exists = models.CharField(max_length=200, default=True)
     slug = models.SlugField(max_length=200)
 
