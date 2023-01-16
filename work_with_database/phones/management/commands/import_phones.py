@@ -1,7 +1,7 @@
 import csv
 
 from django.core.management.base import BaseCommand
-#from phones.models import Phone
+from phones.models import Phone
 
 
 
@@ -15,13 +15,13 @@ class Command(BaseCommand):
             for row in phones:
                 phone=phone()
                 self.stdout.write(
-                    'Created phone {} {} {} {} {} {}'.format(phone.name,  phone.price,
-                                                    phone.image, phone.release_date, phone.lte_exists,  phone.slug )
+                    'Created phone {} {} {} {} {} {}'.format(phone.name,  phone.image,
+                                                          phone.price, phone.release_date, phone.lte_exists, phone.slug )
                 )
   #
   #              Phone.objects.create(id=row[0], name=row[1], price=row[2], image=row[3],
  #                                    release_date=row[4], lte_exists=row[5], slug=row[6])
-                phone.save
+                Phone.save(*args, **options)
 
 
 
