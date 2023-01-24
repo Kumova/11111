@@ -8,8 +8,9 @@ def index(request):
 
 
 def show_catalog(request):
-    phone = Phone.objects.order_by('phone__name','phone__price' )
- #   phone = Phone.objects.order_by('price')
+    sort = request.GET.get('sort')
+    phone = Phone.objects.order_by('name','price')
+#    phone = Phone.objects.order_by('phone__name','phone__price' )
     template = 'catalog.html'
     context = {
         'phone': phone,
